@@ -1,4 +1,8 @@
 import chardet
+import argparse
+
+# TODO add parser for command-line options
+
 
 def transformer(filepath, to_encode='utf-8', from_encode=None, backup_path=None):
     with open(filepath, 'rb+') as fin:
@@ -14,6 +18,7 @@ def transformer(filepath, to_encode='utf-8', from_encode=None, backup_path=None)
         with open(backup_path, 'wb') as fout:
             fout.write(data)
     print("[INFO] Transformed file {}'s encoding from {} to {}, backed up as {}.".format(filepath, from_encode, to_encode, backup_path))
+
 
 if __name__ == "__main__":
     s = '这是测试字符串'
