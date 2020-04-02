@@ -1,5 +1,6 @@
 import chardet
 import argparse
+import os
 
 # TODO add parser for command-line options
 
@@ -21,15 +22,6 @@ def transformer(filepath, to_encode='utf-8', from_encode=None, backup_path=None)
 
 
 if __name__ == "__main__":
-    s = '这是测试字符串'
-    s_gbk = s.encode('GBK')
-    s_utf8 = s.encode('utf-8')
-    print(s, s_gbk, s_utf8)
-    test_path = 'test.txt'
-    with open(test_path, 'wb') as f:
-        f.write(s_gbk)
-    transformer(test_path, 'utf-8', 'gbk')
-    with open(test_path + '.backup', 'r', encoding='gbk') as f:
-        print(f.read())
-    with open(test_path, 'r', encoding='utf-8') as f:
-        print(f.read())
+    for file in os.listdir('G:/study/毕业论文/论文/chapters'):
+        if file.split('.')[-1] == 'tex':
+            transformer('G:/study/毕业论文/论文/chapters/' + file, 'utf-8', 'GB2312')
